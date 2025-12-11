@@ -33,8 +33,17 @@ export const LoginForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const trimmedNickname = nickname.trim();
+    
+    // Se não tiver nickname, usa um nome aleatório para facilitar teste
+    if (!trimmedNickname) {
+      const randomName = `Player${Math.floor(Math.random() * 9999)}`;
+      login(randomName, level);
+      return;
+    }
+    
     if (validate()) {
-      login(nickname.trim(), level);
+      login(trimmedNickname, level);
     }
   };
 
