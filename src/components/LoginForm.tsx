@@ -13,17 +13,18 @@ export const LoginForm = () => {
 
   const validate = () => {
     const newErrors: { nickname?: string; level?: string } = {};
+    const trimmedNickname = nickname.trim();
     
-    if (!nickname.trim()) {
-      newErrors.nickname = 'Nickname is required';
-    } else if (nickname.length < 2) {
-      newErrors.nickname = 'Nickname must be at least 2 characters';
-    } else if (nickname.length > 20) {
-      newErrors.nickname = 'Nickname must be less than 20 characters';
+    if (!trimmedNickname) {
+      newErrors.nickname = 'Nickname é obrigatório';
+    } else if (trimmedNickname.length < 2) {
+      newErrors.nickname = 'Nickname deve ter pelo menos 2 caracteres';
+    } else if (trimmedNickname.length > 20) {
+      newErrors.nickname = 'Nickname deve ter menos de 20 caracteres';
     }
 
-    if (level < 1 || level > 20) {
-      newErrors.level = 'Level must be between 1 and 20';
+    if (isNaN(level) || level < 1 || level > 20) {
+      newErrors.level = 'Level deve estar entre 1 e 20';
     }
 
     setErrors(newErrors);
