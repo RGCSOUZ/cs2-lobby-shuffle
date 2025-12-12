@@ -80,6 +80,7 @@ export const LoginForm = () => {
                   type="text"
                   value={nickname}
                   onChange={(e) => setNickname(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleSubmit(e)}
                   placeholder="Digite seu apelido"
                   className="pl-11 h-12 bg-secondary/50 border-border/50 focus:border-primary focus:ring-primary/20"
                   maxLength={20}
