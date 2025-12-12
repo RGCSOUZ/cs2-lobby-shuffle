@@ -63,15 +63,15 @@ export const LoginForm = () => {
           <h1 className="font-display text-4xl font-bold tracking-wider mb-2 glow-text">
             CS2 <span className="text-primary">LOBBIES</span>
           </h1>
-          <p className="text-muted-foreground">Find your squad. Dominate the game.</p>
+          <p className="text-muted-foreground">Encontre seu time. Domine o jogo.</p>
         </div>
 
         {/* Login card */}
         <div className="gaming-card p-8 animate-slide-in" style={{ animationDelay: '0.1s' }}>
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="space-y-6">
             <div className="space-y-2">
               <Label htmlFor="nickname" className="font-display text-sm tracking-wide">
-                NICKNAME
+                APELIDO
               </Label>
               <div className="relative">
                 <Gamepad2 className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -80,7 +80,7 @@ export const LoginForm = () => {
                   type="text"
                   value={nickname}
                   onChange={(e) => setNickname(e.target.value)}
-                  placeholder="Enter your nickname"
+                  placeholder="Digite seu apelido"
                   className="pl-11 h-12 bg-secondary/50 border-border/50 focus:border-primary focus:ring-primary/20"
                   maxLength={20}
                 />
@@ -92,7 +92,7 @@ export const LoginForm = () => {
 
             <div className="space-y-2">
               <Label htmlFor="level" className="font-display text-sm tracking-wide">
-                LEVEL (1-20)
+                NÍVEL (1-20)
               </Label>
               <div className="relative">
                 <Swords className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -121,15 +121,20 @@ export const LoginForm = () => {
               </div>
             </div>
 
-            <Button type="submit" variant="gaming" className="w-full h-12">
-              Enter Arena
+            <Button 
+              type="button" 
+              variant="gaming" 
+              className="w-full h-12"
+              onClick={handleSubmit}
+            >
+              Entrar na Arena
             </Button>
-          </form>
+          </div>
         </div>
 
         {/* Footer */}
         <p className="text-center text-muted-foreground text-sm mt-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-          No account needed. Just pick a name and play.
+          Sem necessidade de conta. Escolha um nome e jogue.
         </p>
       </div>
     </div>
