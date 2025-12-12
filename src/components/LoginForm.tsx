@@ -31,8 +31,7 @@ export const LoginForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     const trimmedNickname = nickname.trim();
     
     // Se não tiver nickname, usa um nome aleatório para facilitar teste
@@ -44,6 +43,12 @@ export const LoginForm = () => {
     
     if (validate()) {
       login(trimmedNickname, level);
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleSubmit();
     }
   };
 
@@ -80,7 +85,7 @@ export const LoginForm = () => {
                   type="text"
                   value={nickname}
                   onChange={(e) => setNickname(e.target.value)}
-                  onKeyDown={(e) => e.key === 'Enter' && handleSubmit(e)}
+                  onKeyDown={handleKeyDown}
                   placeholder="Digite seu apelido"
                   className="pl-11 h-12 bg-secondary/50 border-border/50 focus:border-primary focus:ring-primary/20"
                   maxLength={20}
